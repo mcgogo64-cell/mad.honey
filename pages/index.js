@@ -72,6 +72,37 @@ const PremiumIcons = {
       <path d="M30 20L30 34" stroke="#1D1B19" strokeWidth="2" strokeLinecap="round"/>
       <path d="M32 24L38 28L32 32" stroke="#CDA349" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" fill="none"/>
     </svg>
+  ),
+  secure: (
+    <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <rect x="6" y="14" width="20" height="12" rx="2" stroke="#1D1B19" strokeWidth="1.75"/>
+      <path d="M10 14V10C10 7.79086 11.7909 6 14 6H18C20.2091 6 22 7.79086 22 10V14" stroke="#1D1B19" strokeWidth="1.75" strokeLinecap="round"/>
+      <path d="M16 20L16 24" stroke="#CDA349" strokeWidth="2" strokeLinecap="round"/>
+      <circle cx="16" cy="20" r="1.5" fill="#CDA349" fillOpacity="0.3"/>
+    </svg>
+  ),
+  prime: (
+    <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M16 8L20 14L27 15L22 20L23 27L16 24L9 27L10 20L5 15L12 14L16 8Z" stroke="#1D1B19" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round"/>
+      <path d="M16 8L20 14L27 15" stroke="#CDA349" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+    </svg>
+  ),
+  delivery: (
+    <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <rect x="6" y="12" width="14" height="10" rx="1" stroke="#1D1B19" strokeWidth="1.75"/>
+      <path d="M20 12L24 16L20 20" stroke="#1D1B19" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round"/>
+      <path d="M24 16L28 16" stroke="#CDA349" strokeWidth="2" strokeLinecap="round"/>
+      <circle cx="10" cy="24" r="2" stroke="#1D1B19" strokeWidth="1.5"/>
+      <circle cx="22" cy="24" r="2" stroke="#1D1B19" strokeWidth="1.5"/>
+    </svg>
+  ),
+  returns: (
+    <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M8 16L4 12L8 8" stroke="#1D1B19" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round"/>
+      <path d="M4 12H20C22.2091 12 24 13.7909 24 16V20" stroke="#1D1B19" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round"/>
+      <path d="M24 16L28 20L24 24" stroke="#1D1B19" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round"/>
+      <path d="M28 20H12C9.79086 20 8 18.2091 8 16V12" stroke="#CDA349" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+    </svg>
   )
 };
 
@@ -141,6 +172,16 @@ const translations = {
       subtitle: 'Limited Harvest – Ships Worldwide',
       button: 'Shop Now'
     },
+    amazonTrust: {
+      title: 'Shop with Confidence on Amazon',
+      badges: [
+        { text: 'Secure Payment', icon: 'secure' },
+        { text: 'Prime Eligible', icon: 'prime' },
+        { text: 'Fast Delivery', icon: 'delivery' },
+        { text: 'Easy Returns', icon: 'returns' }
+      ],
+      note: 'Your purchase is protected by Amazon\'s A-to-z Guarantee'
+    },
     footer: '© 2025 Himalayan Mad Honey. All Rights Reserved.'
   },
   tr: {
@@ -207,6 +248,16 @@ const translations = {
       title: 'Premium Himalaya Deli Bal\'ını Deneyin',
       subtitle: 'Sınırlı Hasat – Dünya Çapında Kargo',
       button: 'Şimdi Satın Al'
+    },
+    amazonTrust: {
+      title: 'Amazon\'da Güvenle Alışveriş Yapın',
+      badges: [
+        { text: 'Güvenli Ödeme', icon: 'secure' },
+        { text: 'Prime Uygun', icon: 'prime' },
+        { text: 'Hızlı Teslimat', icon: 'delivery' },
+        { text: 'Kolay İade', icon: 'returns' }
+      ],
+      note: 'Satın alımınız Amazon A-to-z Garantisi ile korunmaktadır'
     },
     footer: '© 2025 Himalaya Deli Bal. Tüm Hakları Saklıdır.'
   }
@@ -377,6 +428,22 @@ export default function Home() {
                 ))}
               </ul>
             </div>
+          </div>
+        </section>
+
+        {/* Amazon Trust Section */}
+        <section className="amazon-trust">
+          <div className="amazon-trust-content">
+            <h3 className="amazon-trust-title">{t.amazonTrust.title}</h3>
+            <div className="amazon-badges">
+              {t.amazonTrust.badges.map((badge, i) => (
+                <div key={i} className="amazon-badge">
+                  <div className="amazon-badge-icon">{PremiumIcons[badge.icon]}</div>
+                  <span className="amazon-badge-text">{badge.text}</span>
+                </div>
+              ))}
+            </div>
+            <p className="amazon-trust-note">{t.amazonTrust.note}</p>
           </div>
         </section>
 

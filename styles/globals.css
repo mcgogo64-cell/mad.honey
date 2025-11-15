@@ -348,6 +348,80 @@ body {
   font-size: 20px;
 }
 
+/* Amazon Trust Section */
+.amazon-trust {
+  padding: 80px 40px;
+  background: #fff;
+  border-top: 1px solid #E5E0D6;
+}
+
+.amazon-trust-content {
+  max-width: 1000px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.amazon-trust-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 32px;
+  font-weight: 600;
+  color: #2A1E0F;
+  margin-bottom: 40px;
+}
+
+.amazon-badges {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 30px;
+  margin-bottom: 30px;
+}
+
+.amazon-badge {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  padding: 20px;
+  background: #FAF7F2;
+  border-radius: 8px;
+  border: 1px solid #E5E0D6;
+  transition: all 0.3s ease;
+}
+
+.amazon-badge:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+  border-color: #CDA349;
+}
+
+.amazon-badge-icon {
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.amazon-badge-icon svg {
+  width: 100%;
+  height: 100%;
+}
+
+.amazon-badge-text {
+  font-size: 14px;
+  font-weight: 500;
+  color: #2A1E0F;
+  text-align: center;
+  font-family: 'Inter', sans-serif;
+}
+
+.amazon-trust-note {
+  font-size: 14px;
+  color: #8B7355;
+  font-style: italic;
+  margin-top: 20px;
+}
+
 /* Final CTA */
 .final-cta {
   padding: 120px 40px;
@@ -442,6 +516,15 @@ body {
     grid-template-columns: 1fr;
   }
 
+  .amazon-badges {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+  }
+
+  .amazon-trust-title {
+    font-size: 28px;
+  }
+
   .nav-container {
     padding: 0 20px;
   }
@@ -481,5 +564,13 @@ body {
   .badge {
     padding: 10px 20px;
     font-size: 12px;
+  }
+
+  .amazon-badges {
+    grid-template-columns: 1fr;
+  }
+
+  .amazon-trust {
+    padding: 60px 20px;
   }
 }
