@@ -335,6 +335,16 @@ export default function Home() {
               />
             </div>
           </div>
+          <div className="hero-cta">
+            <a 
+              href={AMAZON_LINK} 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="hero-buy-button"
+            >
+              {t.cta.button}
+            </a>
+          </div>
         </section>
 
         <section className="intro">
