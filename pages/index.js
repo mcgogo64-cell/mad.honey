@@ -288,14 +288,97 @@ export default function Home() {
     router.push('/', '/', { locale: nextLocale });
   };
 
+  const siteUrl = 'https://mad-honey.vercel.app';
+  const currentUrl = `${siteUrl}${router.asPath}`;
+  const imageUrl = `${siteUrl}/Ekran görüntüsü 2025-11-15 144016.png`;
+
+  // Structured Data (JSON-LD)
+  const structuredData = {
+    "@context": "https://schema.org",
+    "@type": "Product",
+    "name": t.title,
+    "description": t.intro,
+    "image": [
+      `${siteUrl}/Ekran görüntüsü 2025-11-15 144016.png`,
+      `${siteUrl}/Ekran görüntüsü 2025-11-15 144159.png`
+    ],
+    "brand": {
+      "@type": "Brand",
+      "name": "Premium Mad Honey"
+    },
+    "offers": {
+      "@type": "Offer",
+      "url": AMAZON_LINK,
+      "priceCurrency": "USD",
+      "availability": "https://schema.org/InStock",
+      "seller": {
+        "@type": "Organization",
+        "name": "Amazon"
+      }
+    },
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "4.7",
+      "reviewCount": "20267"
+    }
+  };
+
+  // Language alternates
+  const languageAlternates = Object.keys(translations).map(locale => ({
+    hrefLang: locale,
+    href: `${siteUrl}/${locale === 'en' ? '' : locale}`
+  }));
+
   return (
     <div className={isRtl ? 'rtl' : ''}>
       <Head>
-        <title>{t.title}</title>
+        {/* Basic Meta Tags */}
+        <title>{t.title} | Premium Authentic Mad Honey</title>
         <meta name="description" content={t.intro} />
+        <meta name="keywords" content="mad honey, deli bal, rhododendron honey, premium honey, authentic honey, black sea honey, grayanotoxin honey, natural honey, traditional honey" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="author" content="Premium Mad Honey" />
+        <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+        <meta name="googlebot" content="index, follow" />
+        <link rel="canonical" href={currentUrl} />
+        
+        {/* Language Alternates */}
+        {languageAlternates.map((alt, i) => (
+          <link key={i} rel="alternate" hrefLang={alt.hrefLang} href={alt.href} />
+        ))}
+        <link rel="alternate" hrefLang="x-default" href={siteUrl} />
+
+        {/* Open Graph / Facebook */}
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content={currentUrl} />
         <meta property="og:title" content={t.title} />
         <meta property="og:description" content={t.intro} />
+        <meta property="og:image" content={imageUrl} />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
+        <meta property="og:image:alt" content={t.title} />
+        <meta property="og:site_name" content="Premium Mad Honey" />
+        <meta property="og:locale" content={locale === 'en' ? 'en_US' : locale === 'tr' ? 'tr_TR' : locale === 'es' ? 'es_ES' : locale === 'fr' ? 'fr_FR' : locale === 'de' ? 'de_DE' : 'en_US'} />
+        
+        {/* Twitter Card */}
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:url" content={currentUrl} />
+        <meta name="twitter:title" content={t.title} />
+        <meta name="twitter:description" content={t.intro} />
+        <meta name="twitter:image" content={imageUrl} />
+        <meta name="twitter:image:alt" content={t.title} />
+
+        {/* Additional SEO */}
+        <meta name="theme-color" content="#667eea" />
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+        <meta name="format-detection" content="telephone=no" />
+        
+        {/* Structured Data */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
+        />
       </Head>
 
       <main className="container">

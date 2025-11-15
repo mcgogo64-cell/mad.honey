@@ -1,0 +1,9 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://mad-honey.vercel.app/sitemap.xml
+
+# Disallow admin and private areas
+Disallow: /api/
+Disallow: /_next/
+
