@@ -4,6 +4,77 @@ import { useMemo } from 'react';
 
 const AMAZON_LINK = 'https://amzn.to/4o1YhZ8';
 
+// Premium SVG Icons
+const PremiumIcons = {
+  wild: (
+    <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M24 8C20 8 18 12 18 16C18 20 20 24 24 24C28 24 30 20 30 16C30 12 28 8 24 8Z" stroke="#1D1B19" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+      <path d="M16 32C14 30 12 28 12 24C12 20 14 18 16 20" stroke="#CDA349" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+      <path d="M32 32C34 30 36 28 36 24C36 20 34 18 32 20" stroke="#1D1B19" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+      <path d="M20 36L24 40L28 36" stroke="#1D1B19" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+    </svg>
+  ),
+  nepal: (
+    <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M12 36L20 16L24 24L28 12L36 36" stroke="#1D1B19" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+      <path d="M20 16L24 24L28 12" stroke="#CDA349" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>
+      <line x1="8" y1="36" x2="40" y2="36" stroke="#1D1B19" strokeWidth="2" strokeLinecap="round"/>
+    </svg>
+  ),
+  premium: (
+    <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M24 8L28 18L38 20L30 28L32 38L24 32L16 38L18 28L10 20L20 18L24 8Z" stroke="#1D1B19" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+      <path d="M24 8L28 18L38 20L30 28L32 38L24 32" stroke="#CDA349" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>
+    </svg>
+  ),
+  rare: (
+    <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M24 8L30 18L40 20L32 28L34 38L24 34L14 38L16 28L8 20L18 18L24 8Z" stroke="#1D1B19" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+      <path d="M24 18L28 24L24 30L20 24L24 18Z" stroke="#CDA349" strokeWidth="2" fill="url(#goldGradient)"/>
+      <defs>
+        <linearGradient id="goldGradient" x1="20" y1="18" x2="28" y2="30" gradientUnits="userSpaceOnUse">
+          <stop offset="0%" stopColor="#CDA349" stopOpacity="0.3"/>
+          <stop offset="100%" stopColor="#CDA349" stopOpacity="0.1"/>
+        </linearGradient>
+      </defs>
+    </svg>
+  ),
+  lab: (
+    <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <rect x="18" y="8" width="12" height="28" rx="2" stroke="#1D1B19" strokeWidth="2"/>
+      <line x1="20" y1="14" x2="28" y2="14" stroke="#1D1B19" strokeWidth="1.5"/>
+      <line x1="20" y1="18" x2="28" y2="18" stroke="#1D1B19" strokeWidth="1.5"/>
+      <line x1="20" y1="22" x2="28" y2="22" stroke="#1D1B19" strokeWidth="1.5"/>
+      <circle cx="24" cy="28" r="3" fill="#CDA349" fillOpacity="0.3" stroke="#CDA349" strokeWidth="1.5"/>
+      <path d="M24 28L24 36" stroke="#CDA349" strokeWidth="2" strokeLinecap="round"/>
+    </svg>
+  ),
+  flavor: (
+    <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M24 8C24 8 28 12 28 20C28 28 24 32 24 32C24 32 20 28 20 20C20 12 24 8 24 8Z" stroke="#1D1B19" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+      <path d="M24 8C24 8 28 12 28 20C28 28 24 32 24 32" stroke="#CDA349" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+      <line x1="24" y1="20" x2="24" y2="32" stroke="#1D1B19" strokeWidth="1.5"/>
+      <path d="M24 32L24 40" stroke="#CDA349" strokeWidth="2" strokeLinecap="round"/>
+    </svg>
+  ),
+  harvest: (
+    <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <line x1="24" y1="8" x2="24" y2="28" stroke="#1D1B19" strokeWidth="2" strokeLinecap="round"/>
+      <rect x="20" y="28" width="8" height="6" rx="1" stroke="#1D1B19" strokeWidth="2"/>
+      <path d="M20 28L22 26L26 26L28 28" stroke="#CDA349" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+      <line x1="18" y1="34" x2="30" y2="34" stroke="#1D1B19" strokeWidth="1.5"/>
+    </svg>
+  ),
+  shipping: (
+    <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <rect x="10" y="18" width="20" height="16" rx="1" stroke="#1D1B19" strokeWidth="2"/>
+      <path d="M10 20L24 14L38 20" stroke="#1D1B19" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+      <path d="M30 20L30 34" stroke="#1D1B19" strokeWidth="2" strokeLinecap="round"/>
+      <path d="M32 24L38 28L32 32" stroke="#CDA349" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" fill="none"/>
+    </svg>
+  )
+};
+
 const translations = {
   en: {
     name: 'English',
@@ -20,22 +91,22 @@ const translations = {
     ],
     features: [
       {
-        icon: '🏔️',
+        icon: 'wild',
         title: 'Wild & Organic',
         desc: 'Collected from remote Himalayan rhododendron forests at high altitudes.'
       },
       {
-        icon: '🇳🇵',
+        icon: 'nepal',
         title: 'Authentic Nepal Origin',
         desc: 'Harvested traditionally by local honey hunters using centuries-old methods.'
       },
       {
-        icon: '⚡',
+        icon: 'premium',
         title: 'High-Potency',
         desc: 'Contains natural grayanotoxins in controlled amounts, lab-tested for safety.'
       },
       {
-        icon: '✨',
+        icon: 'rare',
         title: 'Limited Harvest',
         desc: 'Seasonally produced, small-batch, rare and highly sought after.'
       }
@@ -87,22 +158,22 @@ const translations = {
     ],
     features: [
       {
-        icon: '🏔️',
+        icon: 'wild',
         title: 'Yabani & Organik',
         desc: 'Yüksek rakımlı uzak Himalaya orman gülü ormanlarından toplanmıştır.'
       },
       {
-        icon: '🇳🇵',
+        icon: 'nepal',
         title: 'Otantik Nepal Menşei',
         desc: 'Yerel bal toplayıcıları tarafından yüzyıllardır kullanılan geleneksel yöntemlerle hasat edilir.'
       },
       {
-        icon: '⚡',
+        icon: 'premium',
         title: 'Yüksek Potans',
         desc: 'Kontrollü miktarlarda doğal grayanotoksin içerir, güvenlik için laboratuvar test edilmiştir.'
       },
       {
-        icon: '✨',
+        icon: 'rare',
         title: 'Sınırlı Hasat',
         desc: 'Mevsimsel olarak üretilir, küçük parti, nadir ve çok aranır.'
       }
@@ -263,7 +334,7 @@ export default function Home() {
           <div className="features-grid">
             {t.features.map((feature, i) => (
               <div key={i} className="feature-card">
-                <div className="feature-icon">{feature.icon}</div>
+                <div className="feature-icon">{PremiumIcons[feature.icon] || PremiumIcons.wild}</div>
                 <h3 className="feature-title">{feature.title}</h3>
                 <p className="feature-desc">{feature.desc}</p>
               </div>
