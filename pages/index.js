@@ -2,126 +2,278 @@ import Head from 'next/head';
 import { useRouter } from 'next/router';
 import { useMemo } from 'react';
 
+const AMAZON_LINK = 'https://amzn.to/4o1YhZ8';
+
 const translations = {
   en: {
     name: 'English',
-    title: 'Mad Honey',
-    intro: 'Mad honey is a distinctive honey made from rhododendron nectar (Rhododendron spp.) in regions like Turkey\'s Black Sea and the Himalayas. It naturally contains grayanotoxins that affect the heart and nervous system. While traditionally used in very small amounts, misuse can be dangerous.',
-    sections: [
-      { h: 'What is it?', p: 'A naturally occurring honey with grayanotoxins, known for its strong aroma and potential physiological effects.' },
-      { h: 'Origin', p: 'Produced during spring bloom in areas rich in rhododendron, notably Turkey\'s Eastern Black Sea and parts of Nepal.' },
-      { h: 'Effects & risks', p: 'Possible symptoms: dizziness, nausea, vomiting, sweating, blurred vision, slow heart rate, low blood pressure. Severe cases require immediate medical attention.' },
-      { h: 'Responsible use', p: 'Buy from trusted sources; keep away from children; start with extremely small amounts; do not combine with alcohol or heart medications; seek medical help if symptoms occur.' }
+    title: 'Premium Mad Honey',
+    subtitle: 'Authentic Rhododendron Honey from the Black Sea Region',
+    intro: 'Discover the extraordinary benefits of authentic Mad Honey, harvested from the pristine rhododendron forests of Turkey\'s Black Sea region. This rare, premium honey contains natural grayanotoxins and has been used traditionally for centuries.',
+    heroTitle: 'Experience the Power of Nature',
+    heroSubtitle: 'Premium Quality • Authentic Source • Traditional Heritage',
+    benefits: [
+      { icon: '🌿', title: '100% Natural', desc: 'Raw, unpasteurized honey from wild rhododendron flowers' },
+      { icon: '🏔️', title: 'Authentic Origin', desc: 'Sourced directly from Turkey\'s Black Sea mountains' },
+      { icon: '⭐', title: 'Premium Quality', desc: 'Carefully harvested and tested for purity' },
+      { icon: '💎', title: 'Rare & Exclusive', desc: 'Limited availability from traditional beekeepers' }
     ],
-    disclaimer: 'This site is informational. Not medical advice.'
+    features: [
+      { h: 'What is Mad Honey?', p: 'Mad honey is a distinctive honey made from rhododendron nectar (Rhododendron spp.) in regions like Turkey\'s Black Sea and the Himalayas. It naturally contains grayanotoxins that have been traditionally used in very small amounts for their unique properties.' },
+      { h: 'Authentic Origin', p: 'Our honey is produced during spring bloom in the pristine rhododendron-rich areas of Turkey\'s Eastern Black Sea region, where traditional beekeeping methods have been preserved for generations.' },
+      { h: 'Traditional Benefits', p: 'Traditionally valued for its unique properties, mad honey has been used in small amounts for centuries. Always use responsibly and consult with healthcare professionals.' },
+      { h: 'Quality Assurance', p: 'We source only from trusted, traditional beekeepers who follow sustainable practices. Each batch is carefully tested to ensure authenticity and purity.' }
+    ],
+    cta: {
+      title: 'Get Your Premium Mad Honey Today',
+      subtitle: 'Limited stock available. Order now and experience authentic quality.',
+      button: 'Shop on Amazon',
+      buttonSecondary: 'Learn More'
+    },
+    disclaimer: 'This product is for informational purposes. Use responsibly and consult healthcare professionals. Keep away from children. Not recommended for pregnant women or those with heart conditions.'
   },
   tr: {
     name: 'Türkçe',
-    title: 'Deli Bal',
-    intro: 'Deli bal, Karadeniz ve Himalaya bölgelerinde yetişen orman gülü (Rhododendron) nektarından üretilen, kalp ve sinir sistemini etkileyen grayanotoksinler içeren özel bir baldı. Geleneksel olarak çok küçük miktarlarda kullanılsa da yanlış kullanım tehlikelidir.',
-    sections: [
-      { h: 'Nedir?', p: 'Grayanotoksin içeren, kuvvetli aromalı ve fizyolojik etkileri olabilen doğal bir bal türü.' },
-      { h: 'Kaynak', p: 'Orman gülünün yoğun olduğu bölgelerde, özellikle Türkiye\'nin Doğu Karadeniz\'i ve Nepal\'de ilkbahar çiçeklenme döneminde üretilir.' },
-      { h: 'Etkiler ve Riskler', p: 'Olası belirtiler: baş dönmesi, bulantı, kusma, terleme, görme bulanıklığı, kalp hızında yavaşlama, düşük tansiyon. Ağır durumlarda derhal tıbbi destek gereklidir.' },
-      { h: 'Sorumlu Kullanım', p: 'Güvenilir üreticiden satın alın; çocuklardan uzak tutun; çok küçük miktarlarla başlayın; alkol veya kalp ilaçlarıyla birlikte tüketmeyin; belirtiler olursa hekime başvurun.' }
+    title: 'Premium Deli Bal',
+    subtitle: 'Karadeniz Bölgesinden Otantik Orman Gülü Balı',
+    intro: 'Türkiye\'nin Karadeniz bölgesinin el değmemiş orman gülü ormanlarından hasat edilen otantik Deli Bal\'ın olağanüstü faydalarını keşfedin. Bu nadir, premium bal doğal grayanotoksinler içerir ve yüzyıllardır geleneksel olarak kullanılmaktadır.',
+    heroTitle: 'Doğanın Gücünü Deneyimleyin',
+    heroSubtitle: 'Premium Kalite • Otantik Kaynak • Geleneksel Miras',
+    benefits: [
+      { icon: '🌿', title: '%100 Doğal', desc: 'Yabani orman gülü çiçeklerinden ham, pastörize edilmemiş bal' },
+      { icon: '🏔️', title: 'Otantik Menşe', desc: 'Doğrudan Türkiye\'nin Karadeniz dağlarından temin edilir' },
+      { icon: '⭐', title: 'Premium Kalite', desc: 'Özenle hasat edilmiş ve saflık için test edilmiş' },
+      { icon: '💎', title: 'Nadir ve Özel', desc: 'Geleneksel arıcılardan sınırlı miktarda mevcut' }
     ],
-    disclaimer: 'Bu site bilgilendirme amaçlıdır. Tıbbi tavsiye değildir.'
+    features: [
+      { h: 'Deli Bal Nedir?', p: 'Deli bal, Karadeniz ve Himalaya bölgelerinde yetişen orman gülü (Rhododendron) nektarından üretilen, kalp ve sinir sistemini etkileyen grayanotoksinler içeren özel bir baldı. Geleneksel olarak çok küçük miktarlarda kullanılır.' },
+      { h: 'Otantik Menşe', p: 'Balımız, geleneksel arıcılık yöntemlerinin nesiller boyunca korunduğu Türkiye\'nin Doğu Karadeniz bölgesinin el değmemiş, orman gülü açısından zengin alanlarında ilkbahar çiçeklenme döneminde üretilir.' },
+      { h: 'Geleneksel Faydalar', p: 'Geleneksel olarak benzersiz özellikleri için değer gören deli bal, yüzyıllardır küçük miktarlarda kullanılmaktadır. Her zaman sorumlu bir şekilde kullanın ve sağlık uzmanlarına danışın.' },
+      { h: 'Kalite Güvencesi', p: 'Yalnızca sürdürülebilir uygulamaları takip eden güvenilir, geleneksel arıcılardan temin ediyoruz. Her parti, otantiklik ve saflığı sağlamak için dikkatle test edilir.' }
+    ],
+    cta: {
+      title: 'Premium Deli Bal\'ınızı Bugün Alın',
+      subtitle: 'Sınırlı stok mevcut. Şimdi sipariş verin ve otantik kaliteyi deneyimleyin.',
+      button: 'Amazon\'da Satın Al',
+      buttonSecondary: 'Daha Fazla Bilgi'
+    },
+    disclaimer: 'Bu ürün bilgilendirme amaçlıdır. Sorumlu kullanın ve sağlık uzmanlarına danışın. Çocuklardan uzak tutun. Hamile kadınlar veya kalp rahatsızlığı olanlar için önerilmez.'
   },
   es: {
     name: 'Español',
-    title: 'Miel loca',
-    intro: 'La miel loca se elabora con néctar de rododendro en regiones como la costa del Mar Negro (Turquía) y el Himalaya. Contiene grayanotoxinas que afectan el corazón y el sistema nervioso. Su uso tradicional es en cantidades muy pequeñas; el uso indebido puede ser peligroso.',
-    sections: [
-      { h: '¿Qué es?', p: 'Miel natural con grayanotoxinas, aroma intenso y posibles efectos fisiológicos.' },
-      { h: 'Origen', p: 'Producida durante la floración de primavera en áreas ricas en rododendros, especialmente Turquía y Nepal.' },
-      { h: 'Efectos y riesgos', p: 'Síntomas posibles: mareo, náuseas, vómito, sudoración, visión borrosa, bradicardia, hipotensión. En casos graves, atención médica inmediata.' },
-      { h: 'Uso responsable', p: 'Compre de fuentes confiables; mantenga fuera del alcance de los niños; empiece con cantidades muy pequeñas; no mezcle con alcohol ni medicamentos cardíacos; busque ayuda médica si aparecen síntomas.' }
+    title: 'Miel Loca Premium',
+    subtitle: 'Miel Auténtica de Rododendro de la Región del Mar Negro',
+    intro: 'Descubra los extraordinarios beneficios de la miel loca auténtica, cosechada de los prístinos bosques de rododendros de la región del Mar Negro de Turquía. Esta miel rara y premium contiene grayanotoxinas naturales y se ha utilizado tradicionalmente durante siglos.',
+    heroTitle: 'Experimente el Poder de la Naturaleza',
+    heroSubtitle: 'Calidad Premium • Fuente Auténtica • Herencia Tradicional',
+    benefits: [
+      { icon: '🌿', title: '100% Natural', desc: 'Miel cruda, sin pasteurizar de flores silvestres de rododendro' },
+      { icon: '🏔️', title: 'Origen Auténtico', desc: 'Obtenido directamente de las montañas del Mar Negro de Turquía' },
+      { icon: '⭐', title: 'Calidad Premium', desc: 'Cosechada y probada cuidadosamente para garantizar pureza' },
+      { icon: '💎', title: 'Rara y Exclusiva', desc: 'Disponibilidad limitada de apicultores tradicionales' }
     ],
-    disclaimer: 'Sitio informativo. No constituye consejo médico.'
+    features: [
+      { h: '¿Qué es la Miel Loca?', p: 'La miel loca se elabora con néctar de rododendro en regiones como la costa del Mar Negro (Turquía) y el Himalaya. Contiene grayanotoxinas que se han utilizado tradicionalmente en cantidades muy pequeñas por sus propiedades únicas.' },
+      { h: 'Origen Auténtico', p: 'Nuestra miel se produce durante la floración de primavera en las áreas prístinas ricas en rododendros de la región del Mar Negro Oriental de Turquía, donde los métodos tradicionales de apicultura se han preservado durante generaciones.' },
+      { h: 'Beneficios Tradicionales', p: 'Tradicionalmente valorada por sus propiedades únicas, la miel loca se ha utilizado en pequeñas cantidades durante siglos. Siempre use responsablemente y consulte con profesionales de la salud.' },
+      { h: 'Garantía de Calidad', p: 'Obtenemos solo de apicultores tradicionales confiables que siguen prácticas sostenibles. Cada lote se prueba cuidadosamente para garantizar autenticidad y pureza.' }
+    ],
+    cta: {
+      title: 'Obtenga Su Miel Loca Premium Hoy',
+      subtitle: 'Stock limitado disponible. Ordene ahora y experimente calidad auténtica.',
+      button: 'Comprar en Amazon',
+      buttonSecondary: 'Saber Más'
+    },
+    disclaimer: 'Este producto es solo para fines informativos. Use responsablemente y consulte a profesionales de la salud. Mantenga fuera del alcance de los niños. No recomendado para mujeres embarazadas o personas con afecciones cardíacas.'
   },
   fr: {
     name: 'Français',
-    title: 'Miel fou',
-    intro: 'Le miel fou est produit à partir du nectar de rhododendron, notamment en Turquie (mer Noire) et dans l’Himalaya. Il contient des grayanotoxines qui agissent sur le cœur et le système nerveux. Traditionnellement utilisé en très petites quantités, un mauvais usage peut être dangereux.',
-    sections: [
-      { h: 'Qu’est-ce que c’est ?', p: 'Un miel naturel contenant des grayanotoxines, au parfum prononcé et aux effets physiologiques possibles.' },
-      { h: 'Origine', p: 'Fabriqué lors de la floraison printanière dans des zones riches en rhododendrons, notamment en Turquie et au Népal.' },
-      { h: 'Effets et risques', p: 'Symptômes possibles : vertiges, nausées, vomissements, sueurs, vision floue, bradycardie, hypotension. Les cas graves nécessitent une prise en charge immédiate.' },
-      { h: 'Usage responsable', p: 'Achetez auprès de sources fiables ; tenez hors de portée des enfants ; commencez par des quantités infimes ; évitez l’alcool et les médicaments cardiaques ; consultez si des symptômes apparaissent.' }
+    title: 'Miel Fou Premium',
+    subtitle: 'Miel Authentique de Rhododendron de la Région de la Mer Noire',
+    intro: 'Découvrez les bienfaits extraordinaires du miel fou authentique, récolté dans les forêts vierges de rhododendrons de la région de la Mer Noire en Turquie. Ce miel rare et premium contient des grayanotoxines naturelles et est utilisé traditionnellement depuis des siècles.',
+    heroTitle: 'Découvrez la Puissance de la Nature',
+    heroSubtitle: 'Qualité Premium • Source Authentique • Héritage Traditionnel',
+    benefits: [
+      { icon: '🌿', title: '100% Naturel', desc: 'Miel cru, non pasteurisé de fleurs sauvages de rhododendron' },
+      { icon: '🏔️', title: 'Origine Authentique', desc: 'Provenant directement des montagnes de la Mer Noire en Turquie' },
+      { icon: '⭐', title: 'Qualité Premium', desc: 'Récolté et testé soigneusement pour garantir la pureté' },
+      { icon: '💎', title: 'Rare et Exclusif', desc: 'Disponibilité limitée d\'apiculteurs traditionnels' }
     ],
-    disclaimer: 'Site informatif. Ne constitue pas un avis médical.'
+    features: [
+      { h: 'Qu\'est-ce que le Miel Fou?', p: 'Le miel fou est produit à partir du nectar de rhododendron, notamment en Turquie (mer Noire) et dans l\'Himalaya. Il contient des grayanotoxines qui ont été traditionnellement utilisées en très petites quantités pour leurs propriétés uniques.' },
+      { h: 'Origine Authentique', p: 'Notre miel est produit lors de la floraison printanière dans les zones vierges riches en rhododendrons de la région de la Mer Noire orientale de la Turquie, où les méthodes traditionnelles d\'apiculture ont été préservées pendant des générations.' },
+      { h: 'Bienfaits Traditionnels', p: 'Traditionnellement apprécié pour ses propriétés uniques, le miel fou est utilisé en petites quantités depuis des siècles. Utilisez toujours de manière responsable et consultez des professionnels de la santé.' },
+      { h: 'Garantie Qualité', p: 'Nous nous approvisionnons uniquement auprès d\'apiculteurs traditionnels de confiance qui suivent des pratiques durables. Chaque lot est soigneusement testé pour garantir l\'authenticité et la pureté.' }
+    ],
+    cta: {
+      title: 'Obtenez Votre Miel Fou Premium Aujourd\'hui',
+      subtitle: 'Stock limité disponible. Commandez maintenant et découvrez une qualité authentique.',
+      button: 'Acheter sur Amazon',
+      buttonSecondary: 'En Savoir Plus'
+    },
+    disclaimer: 'Ce produit est à des fins informatives uniquement. Utilisez de manière responsable et consultez des professionnels de la santé. Tenir hors de portée des enfants. Non recommandé pour les femmes enceintes ou les personnes souffrant de problèmes cardiaques.'
   },
   de: {
     name: 'Deutsch',
-    title: 'Gifthonig',
-    intro: 'Gifthonig wird aus Rhododendron-Nektar hergestellt (u. a. Schwarzmeerregion in der Türkei und Himalaya). Er enthält Grayanotoxine, die Herz und Nervensystem beeinflussen. Traditionell nur in sehr kleinen Mengen verwendet; falscher Gebrauch kann gefährlich sein.',
-    sections: [
-      { h: 'Was ist das?', p: 'Natürlicher Honig mit Grayanotoxinen, kräftigem Aroma und möglichen physiologischen Effekten.' },
-      { h: 'Herkunft', p: 'Entsteht zur Frühjahrstracht in rhododendronreichen Gebieten, besonders Türkei und Nepal.' },
-      { h: 'Wirkungen & Risiken', p: 'Mögliche Symptome: Schwindel, Übelkeit, Erbrechen, Schwitzen, verschwommenes Sehen, langsamer Puls, niedriger Blutdruck. Schwere Fälle erfordern sofortige medizinische Hilfe.' },
-      { h: 'Verantwortungsvoller Gebrauch', p: 'Nur aus vertrauenswürdigen Quellen beziehen; von Kindern fernhalten; mit sehr kleinen Mengen beginnen; nicht mit Alkohol oder Herzmedikamenten kombinieren; bei Symptomen ärztliche Hilfe suchen.' }
+    title: 'Premium Gifthonig',
+    subtitle: 'Authentischer Rhododendron-Honig aus der Schwarzmeer-Region',
+    intro: 'Entdecken Sie die außergewöhnlichen Vorteile von authentischem Gifthonig, geerntet aus den unberührten Rhododendron-Wäldern der Schwarzmeer-Region der Türkei. Dieser seltene Premium-Honig enthält natürliche Grayanotoxine und wird seit Jahrhunderten traditionell verwendet.',
+    heroTitle: 'Erleben Sie die Kraft der Natur',
+    heroSubtitle: 'Premium-Qualität • Authentische Quelle • Traditionelles Erbe',
+    benefits: [
+      { icon: '🌿', title: '100% Natur', desc: 'Rohhonig, unpasteurisiert von wilden Rhododendron-Blüten' },
+      { icon: '🏔️', title: 'Authentischer Ursprung', desc: 'Direkt aus den Schwarzmeer-Bergen der Türkei bezogen' },
+      { icon: '⭐', title: 'Premium-Qualität', desc: 'Sorgfältig geerntet und auf Reinheit geprüft' },
+      { icon: '💎', title: 'Selten & Exklusiv', desc: 'Begrenzte Verfügbarkeit von traditionellen Imkern' }
     ],
-    disclaimer: 'Informationsseite. Keine medizinische Beratung.'
+    features: [
+      { h: 'Was ist Gifthonig?', p: 'Gifthonig wird aus Rhododendron-Nektar hergestellt (u. a. Schwarzmeerregion in der Türkei und Himalaya). Er enthält Grayanotoxine, die traditionell in sehr kleinen Mengen für ihre einzigartigen Eigenschaften verwendet wurden.' },
+      { h: 'Authentischer Ursprung', p: 'Unser Honig wird während der Frühlingsblüte in den unberührten, rhododendronreichen Gebieten der östlichen Schwarzmeer-Region der Türkei produziert, wo traditionelle Imkermethoden seit Generationen erhalten wurden.' },
+      { h: 'Traditionelle Vorteile', p: 'Traditionell für seine einzigartigen Eigenschaften geschätzt, wird Gifthonig seit Jahrhunderten in kleinen Mengen verwendet. Verwenden Sie immer verantwortungsbewusst und konsultieren Sie Gesundheitsfachkräfte.' },
+      { h: 'Qualitätsgarantie', p: 'Wir beziehen nur von vertrauenswürdigen, traditionellen Imkern, die nachhaltige Praktiken befolgen. Jede Charge wird sorgfältig getestet, um Authentizität und Reinheit zu gewährleisten.' }
+    ],
+    cta: {
+      title: 'Holen Sie sich Ihren Premium Gifthonig Heute',
+      subtitle: 'Begrenzter Bestand verfügbar. Bestellen Sie jetzt und erleben Sie authentische Qualität.',
+      button: 'Bei Amazon Kaufen',
+      buttonSecondary: 'Mehr Erfahren'
+    },
+    disclaimer: 'Dieses Produkt dient nur zu Informationszwecken. Verantwortungsbewusst verwenden und Gesundheitsfachkräfte konsultieren. Von Kindern fernhalten. Nicht empfohlen für schwangere Frauen oder Personen mit Herzerkrankungen.'
   },
   ar: {
     name: 'العربية',
-    title: 'العسل المجنون',
-    intro: 'يُنتَج العسل المجنون من رحيق الورد الجبلي (الرودودندرون) في مناطق مثل البحر الأسود في تركيا والهِمالايا. يحتوي بشكل طبيعي على جرايانوكسينات تؤثر في القلب والجهاز العصبي. يُستعمل تقليديًا بكميات صغيرة جدًا، وسوء الاستخدام قد يكون خطيرًا.',
-    sections: [
-      { h: 'ما هو؟', p: 'عسل طبيعي يحتوي على جرايانوكسينات، ذو رائحة قوية وقد يسبب تأثيرات فسيولوجية.' },
-      { h: 'المنشأ', p: 'يُنتَج أثناء تفتح الربيع في مناطق غنية بالرودودندرون، خاصة في تركيا ونيبال.' },
-      { h: 'التأثيرات والمخاطر', p: 'أعراض محتملة: دوار، غثيان، قيء، تعرّق، تشوّش الرؤية، بطء ضربات القلب، انخفاض ضغط الدم. الحالات الشديدة تتطلب عناية طبية فورية.' },
-      { h: 'الاستخدام المسؤول', p: 'اشترِ من مصادر موثوقة؛ أبقِه بعيدًا عن الأطفال؛ ابدأ بكميات صغيرة جدًا؛ تجنّب مزجه مع الكحول أو أدوية القلب؛ اطلب المساعدة الطبية عند ظهور الأعراض.' }
+    title: 'عسل مجنون ممتاز',
+    subtitle: 'عسل رودودندرون أصلي من منطقة البحر الأسود',
+    intro: 'اكتشف الفوائد الاستثنائية للعسل المجنون الأصلي، المحصود من غابات رودودندرون البكر في منطقة البحر الأسود بتركيا. يحتوي هذا العسل النادر والممتاز على جرايانوكسينات طبيعية ويُستخدم تقليدياً منذ قرون.',
+    heroTitle: 'اختبر قوة الطبيعة',
+    heroSubtitle: 'جودة ممتازة • مصدر أصلي • تراث تقليدي',
+    benefits: [
+      { icon: '🌿', title: 'طبيعي 100%', desc: 'عسل خام غير مبستر من أزهار رودودندرون البرية' },
+      { icon: '🏔️', title: 'أصل أصلي', desc: 'مصدر مباشر من جبال البحر الأسود في تركيا' },
+      { icon: '⭐', title: 'جودة ممتازة', desc: 'محصود بعناية ومختبر للنقاء' },
+      { icon: '💎', title: 'نادر وحصري', desc: 'توفر محدود من مربي النحل التقليديين' }
     ],
-    disclaimer: 'موقع معلوماتي، ليس نصيحة طبية.'
+    features: [
+      { h: 'ما هو العسل المجنون؟', p: 'يُنتَج العسل المجنون من رحيق الورد الجبلي (الرودودندرون) في مناطق مثل البحر الأسود في تركيا والهِمالايا. يحتوي بشكل طبيعي على جرايانوكسينات استُخدمت تقليدياً بكميات صغيرة جداً لخصائصها الفريدة.' },
+      { h: 'أصل أصلي', p: 'يُنتَج عسلنا أثناء تفتح الربيع في المناطق البكر الغنية بالرودودندرون في منطقة البحر الأسود الشرقية بتركيا، حيث حُفظت طرق تربية النحل التقليدية عبر الأجيال.' },
+      { h: 'فوائد تقليدية', p: 'قُدّر تقليدياً لخصائصه الفريدة، استُخدم العسل المجنون بكميات صغيرة منذ قرون. استخدم دائماً بمسؤولية واستشر المتخصصين في الرعاية الصحية.' },
+      { h: 'ضمان الجودة', p: 'نحصل فقط من مربي النحل التقليديين الموثوقين الذين يتبعون ممارسات مستدامة. يُختبر كل دفعة بعناية لضمان الأصالة والنقاء.' }
+    ],
+    cta: {
+      title: 'احصل على عسلك المجنون الممتاز اليوم',
+      subtitle: 'مخزون محدود متاح. اطلب الآن واختبر الجودة الأصيلة.',
+      button: 'تسوق على أمازون',
+      buttonSecondary: 'اعرف المزيد'
+    },
+    disclaimer: 'هذا المنتج لأغراض إعلامية فقط. استخدم بمسؤولية واستشر المتخصصين في الرعاية الصحية. أبقِه بعيداً عن الأطفال. غير موصى به للنساء الحوامل أو المصابين بأمراض القلب.'
   },
   hi: {
     name: 'हिन्दी',
-    title: 'मैड हनी',
-    intro: 'मैड हनी रोडोडेंड्रन के पराग से बने शहद का एक प्रकार है (तुर्की के ब्लैक सी क्षेत्र और हिमालय में). इसमें ग्रायैनोटॉक्सिन होते हैं जो हृदय और तंत्रिका तंत्र को प्रभावित कर सकते हैं। पारंपरिक रूप से बहुत कम मात्रा में उपयोग; गलत उपयोग खतरनाक हो सकता है।',
-    sections: [
-      { h: 'यह क्या है?', p: 'प्राकृतिक शहद जिसमें ग्रायैनोटॉक्सिन होते हैं, तीव्र सुगंध और संभावित शारीरिक प्रभावों के साथ।' },
-      { h: 'उत्पत्ति', p: 'वसंत ऋतु में रोडोडेंड्रन वाले क्षेत्रों में तैयार, विशेषकर तुर्की और नेपाल।' },
-      { h: 'प्रभाव और जोखिम', p: 'संभावित लक्षण: चक्कर, मतली, उल्टी, पसीना, धुंधली दृष्टि, धीमी धड़कन, निम्न रक्तचाप। गंभीर मामलों में तुरंत चिकित्सा सहायता लें।' },
-      { h: 'जिम्मेदार उपयोग', p: 'विश्वसनीय स्रोत से खरीदें; बच्चों से दूर रखें; अत्यंत कम मात्रा से शुरू करें; शराब या हृदय दवाओं के साथ न लें; लक्षण हों तो डॉक्टर से मिलें।' }
+    title: 'प्रीमियम मैड हनी',
+    subtitle: 'ब्लैक सी क्षेत्र से प्रामाणिक रोडोडेंड्रन शहद',
+    intro: 'तुर्की के ब्लैक सी क्षेत्र के प्राचीन रोडोडेंड्रन जंगलों से काटे गए प्रामाणिक मैड हनी के असाधारण लाभों की खोज करें। यह दुर्लभ, प्रीमियम शहद प्राकृतिक ग्रायैनोटॉक्सिन युक्त है और सदियों से पारंपरिक रूप से उपयोग किया जाता रहा है।',
+    heroTitle: 'प्रकृति की शक्ति का अनुभव करें',
+    heroSubtitle: 'प्रीमियम गुणवत्ता • प्रामाणिक स्रोत • पारंपरिक विरासत',
+    benefits: [
+      { icon: '🌿', title: '100% प्राकृतिक', desc: 'जंगली रोडोडेंड्रन फूलों से कच्चा, गैर-पाश्चुरीकृत शहद' },
+      { icon: '🏔️', title: 'प्रामाणिक उत्पत्ति', desc: 'सीधे तुर्की के ब्लैक सी पहाड़ों से प्राप्त' },
+      { icon: '⭐', title: 'प्रीमियम गुणवत्ता', desc: 'शुद्धता के लिए सावधानीपूर्वक काटा और परीक्षण किया गया' },
+      { icon: '💎', title: 'दुर्लभ और विशेष', desc: 'पारंपरिक मधुमक्खी पालकों से सीमित उपलब्धता' }
     ],
-    disclaimer: 'यह जानकारी मात्र है, चिकित्सकीय सलाह नहीं।'
+    features: [
+      { h: 'मैड हनी क्या है?', p: 'मैड हनी रोडोडेंड्रन के पराग से बने शहद का एक प्रकार है (तुर्की के ब्लैक सी क्षेत्र और हिमालय में). इसमें ग्रायैनोटॉक्सिन होते हैं जो पारंपरिक रूप से अपने अद्वितीय गुणों के लिए बहुत कम मात्रा में उपयोग किए गए हैं।' },
+      { h: 'प्रामाणिक उत्पत्ति', p: 'हमारा शहद तुर्की के पूर्वी ब्लैक सी क्षेत्र के प्राचीन, रोडोडेंड्रन-समृद्ध क्षेत्रों में वसंत फूलों के दौरान उत्पादित होता है, जहाँ पारंपरिक मधुमक्खी पालन विधियों को पीढ़ियों से संरक्षित किया गया है।' },
+      { h: 'पारंपरिक लाभ', p: 'पारंपरिक रूप से अपने अद्वितीय गुणों के लिए मूल्यवान, मैड हनी सदियों से छोटी मात्रा में उपयोग किया जाता रहा है। हमेशा जिम्मेदारी से उपयोग करें और स्वास्थ्य पेशेवरों से परामर्श करें।' },
+      { h: 'गुणवत्ता आश्वासन', p: 'हम केवल विश्वसनीय, पारंपरिक मधुमक्खी पालकों से प्राप्त करते हैं जो स्थायी प्रथाओं का पालन करते हैं। प्रामाणिकता और शुद्धता सुनिश्चित करने के लिए प्रत्येक बैच का सावधानीपूर्वक परीक्षण किया जाता है।' }
+    ],
+    cta: {
+      title: 'आज ही अपना प्रीमियम मैड हनी प्राप्त करें',
+      subtitle: 'सीमित स्टॉक उपलब्ध। अभी ऑर्डर करें और प्रामाणिक गुणवत्ता का अनुभव करें।',
+      button: 'अमेज़न पर खरीदें',
+      buttonSecondary: 'अधिक जानें'
+    },
+    disclaimer: 'यह उत्पाद केवल सूचनात्मक उद्देश्यों के लिए है। जिम्मेदारी से उपयोग करें और स्वास्थ्य पेशेवरों से परामर्श करें। बच्चों से दूर रखें। गर्भवती महिलाओं या हृदय रोग वालों के लिए अनुशंसित नहीं।'
   },
   zh: {
     name: '简体中文',
-    title: '疯蜜',
-    intro: '疯蜜由杜鹃花（Rhododendron）花蜜制成，主要产自土耳其黑海沿岸和喜马拉雅地区。它天然含有灰毡毒素，可能影响心脏与神经系统。传统上以极少量食用，误用可能很危险。',
-    sections: [
-      { h: '是什么？', p: '一种天然蜂蜜，含灰毡毒素，气味浓郁，可能产生生理影响。' },
-      { h: '产地', p: '在杜鹃花盛开的春季于富含杜鹃花的地区生产，主要在土耳其与尼泊尔。' },
-      { h: '作用与风险', p: '可能症状：头晕、恶心、呕吐、出汗、视力模糊、心率减慢、低血压。严重情况需立即就医。' },
-      { h: '负责任的食用', p: '从可信来源购买；远离儿童；从极少量开始；避免与酒精或心脏药物同食；若出现症状请就医。' }
+    title: '优质疯蜜',
+    subtitle: '来自黑海地区的正宗杜鹃花蜜',
+    intro: '发现来自土耳其黑海地区原始杜鹃花森林的正宗疯蜜的非凡益处。这种稀有的优质蜂蜜含有天然灰毡毒素，几个世纪以来一直被传统使用。',
+    heroTitle: '体验自然的力量',
+    heroSubtitle: '优质品质 • 正宗来源 • 传统传承',
+    benefits: [
+      { icon: '🌿', title: '100% 天然', desc: '来自野生杜鹃花的生蜂蜜，未经巴氏消毒' },
+      { icon: '🏔️', title: '正宗产地', desc: '直接从土耳其黑海山区采购' },
+      { icon: '⭐', title: '优质品质', desc: '精心采集并经过纯度测试' },
+      { icon: '💎', title: '稀有专属', desc: '传统养蜂人限量供应' }
     ],
-    disclaimer: '仅供信息参考，非医疗建议。'
+    features: [
+      { h: '什么是疯蜜？', p: '疯蜜由杜鹃花（Rhododendron）花蜜制成，主要产自土耳其黑海沿岸和喜马拉雅地区。它天然含有灰毡毒素，传统上因其独特特性而以极少量使用。' },
+      { h: '正宗产地', p: '我们的蜂蜜在土耳其东黑海地区原始、富含杜鹃花的地区春季开花期间生产，传统养蜂方法已世代保存。' },
+      { h: '传统益处', p: '传统上因其独特特性而受到重视，疯蜜几个世纪以来一直以少量使用。请始终负责任地使用并咨询医疗专业人士。' },
+      { h: '质量保证', p: '我们仅从遵循可持续做法的值得信赖的传统养蜂人处采购。每批都经过仔细测试以确保真实性和纯度。' }
+    ],
+    cta: {
+      title: '立即获取您的优质疯蜜',
+      subtitle: '库存有限。立即订购，体验正宗品质。',
+      button: '在亚马逊购买',
+      buttonSecondary: '了解更多'
+    },
+    disclaimer: '本产品仅供信息参考。请负责任地使用并咨询医疗专业人士。远离儿童。不建议孕妇或心脏病患者使用。'
   },
   ja: {
     name: '日本語',
-    title: '狂蜂蜜',
-    intro: '狂蜂蜜はツツジ属（Rhododendron）の蜜から作られ、トルコ黒海沿岸やヒマラヤで産出されます。グラヤノトキシンを含み、心臓や神経系に作用することがあります。伝統的にはごく少量のみ使用され、誤用は危険です。',
-    sections: [
-      { h: '概要', p: 'グラヤノトキシンを含む天然の蜂蜜で、強い香りと生理的影響を持つ場合があります。' },
-      { h: '産地', p: 'ツツジが多い地域の春の開花期に生産され、主にトルコやネパールで知られています。' },
-      { h: '作用とリスク', p: 'めまい、吐き気、嘔吐、発汗、視界のぼやけ、徐脈、低血圧など。重症の場合は直ちに医療機関へ。' },
-      { h: '適切な利用', p: '信頼できる供給元から購入し、子どもから離して保管。ごく少量から始め、アルコールや心臓の薬との併用は避け、症状が出たら受診を。' }
+    title: 'プレミアム狂蜂蜜',
+    subtitle: '黒海地域産の本格的なツツジ蜂蜜',
+    intro: 'トルコの黒海地域の原始的なツツジの森から収穫された本格的な狂蜂蜜の特別な利点を発見してください。この希少なプレミアム蜂蜜には天然のグラヤノトキシンが含まれており、何世紀にもわたって伝統的に使用されてきました。',
+    heroTitle: '自然の力を体験',
+    heroSubtitle: 'プレミアム品質 • 本格的なソース • 伝統的な遺産',
+    benefits: [
+      { icon: '🌿', title: '100%天然', desc: '野生のツツジの花から採取された生の、非加熱処理の蜂蜜' },
+      { icon: '🏔️', title: '本格的な原産地', desc: 'トルコの黒海の山々から直接調達' },
+      { icon: '⭐', title: 'プレミアム品質', desc: '純度を確保するために慎重に収穫され、テストされた' },
+      { icon: '💎', title: '希少で独占的', desc: '伝統的な養蜂家からの限定供給' }
     ],
-    disclaimer: '情報提供のみであり、医療助言ではありません。'
+    features: [
+      { h: '狂蜂蜜とは？', p: '狂蜂蜜はツツジ属（Rhododendron）の蜜から作られ、トルコ黒海沿岸やヒマラヤで産出されます。グラヤノトキシンを含み、伝統的にその独特な特性のためにごく少量で使用されてきました。' },
+      { h: '本格的な原産地', p: '私たちの蜂蜜は、伝統的な養蜂方法が世代を超えて保存されてきたトルコの東黒海地域の原始的な、ツツジが豊富な地域で春の開花期に生産されます。' },
+      { h: '伝統的な利点', p: '伝統的にその独特な特性のために評価されてきた狂蜂蜜は、何世紀にもわたって少量で使用されてきました。常に責任を持って使用し、医療専門家に相談してください。' },
+      { h: '品質保証', p: '私たちは持続可能な実践に従う信頼できる伝統的な養蜂家からのみ調達します。各バッチは、真正性と純度を確保するために慎重にテストされます。' }
+    ],
+    cta: {
+      title: '今日、プレミアム狂蜂蜜を手に入れましょう',
+      subtitle: '在庫限定。今すぐ注文して、本格的な品質を体験してください。',
+      button: 'Amazonで購入',
+      buttonSecondary: '詳細を見る'
+    },
+    disclaimer: 'この製品は情報提供のみを目的としています。責任を持って使用し、医療専門家に相談してください。子供の手の届かないところに保管してください。妊婦や心臓疾患のある方には推奨されません。'
   },
   ru: {
     name: 'Русский',
-    title: 'Безумный мёд',
-    intro: 'Безумный мёд получают из нектара рододендрона (Rhododendron) в регионах, таких как побережье Чёрного моря в Турции и Гималаи. Он естественно содержит граянотоксины, влияющие на сердце и нервную систему. Традиционно употребляется в очень малых дозах; неправильное употребление опасно.',
-    sections: [
-      { h: 'Что это?', p: 'Натуральный мёд с граянотоксинами, с ярким ароматом и возможными физиологическими эффектами.' },
-      { h: 'Происхождение', p: 'Производится весной в районах, богатых рододендроном, в основном в Турции и Непале.' },
-      { h: 'Эффекты и риски', p: 'Возможные симптомы: головокружение, тошнота, рвота, потливость, затуманенное зрение, брадикардия, гипотония. В тяжёлых случаях требуется немедленная медицинская помощь.' },
-      { h: 'Ответственное использование', p: 'Покупайте у надёжных продавцов; храните вдали от детей; начинайте с крайне малых доз; не сочетайте с алкоголем или сердечными препаратами; при симптомах обращайтесь к врачу.' }
+    title: 'Премиум Безумный Мёд',
+    subtitle: 'Аутентичный Мёд Рододендрона из Региона Чёрного Моря',
+    intro: 'Откройте для себя необыкновенные преимущества аутентичного безумного мёда, собранного из нетронутых лесов рододендрона в регионе Чёрного моря Турции. Этот редкий премиум мёд содержит природные граянотоксины и традиционно используется веками.',
+    heroTitle: 'Испытайте Силу Природы',
+    heroSubtitle: 'Премиум Качество • Аутентичный Источник • Традиционное Наследие',
+    benefits: [
+      { icon: '🌿', title: '100% Натуральный', desc: 'Сырой, непастеризованный мёд из диких цветов рододендрона' },
+      { icon: '🏔️', title: 'Аутентичное Происхождение', desc: 'Прямо из гор Чёрного моря в Турции' },
+      { icon: '⭐', title: 'Премиум Качество', desc: 'Тщательно собран и протестирован на чистоту' },
+      { icon: '💎', title: 'Редкий и Эксклюзивный', desc: 'Ограниченная доступность от традиционных пчеловодов' }
     ],
-    disclaimer: 'Информационный сайт. Не является медицинской рекомендацией.'
+    features: [
+      { h: 'Что такое Безумный Мёд?', p: 'Безумный мёд получают из нектара рододендрона (Rhododendron) в регионах, таких как побережье Чёрного моря в Турции и Гималаи. Он естественно содержит граянотоксины, которые традиционно использовались в очень малых дозах из-за их уникальных свойств.' },
+      { h: 'Аутентичное Происхождение', p: 'Наш мёд производится весной в нетронутых, богатых рододендроном районах восточного региона Чёрного моря Турции, где традиционные методы пчеловодства сохранялись на протяжении поколений.' },
+      { h: 'Традиционные Преимущества', p: 'Традиционно ценимый за свои уникальные свойства, безумный мёд использовался в малых дозах веками. Всегда используйте ответственно и консультируйтесь с медицинскими специалистами.' },
+      { h: 'Гарантия Качества', p: 'Мы закупаем только у надёжных традиционных пчеловодов, которые следуют устойчивым практикам. Каждая партия тщательно тестируется для обеспечения подлинности и чистоты.' }
+    ],
+    cta: {
+      title: 'Получите Ваш Премиум Безумный Мёд Сегодня',
+      subtitle: 'Ограниченный запас в наличии. Закажите сейчас и испытайте аутентичное качество.',
+      button: 'Купить на Amazon',
+      buttonSecondary: 'Узнать Больше'
+    },
+    disclaimer: 'Этот продукт предназначен только для информационных целей. Используйте ответственно и консультируйтесь с медицинскими специалистами. Храните вдали от детей. Не рекомендуется беременным женщинам или лицам с сердечными заболеваниями.'
   }
 };
 
@@ -140,7 +292,7 @@ export default function Home() {
     <div className={isRtl ? 'rtl' : ''}>
       <Head>
         <title>{t.title}</title>
-        <meta name="description" content="Accurate, brief information about Mad Honey with multilingual support." />
+        <meta name="description" content={t.intro} />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta property="og:title" content={t.title} />
         <meta property="og:description" content={t.intro} />
@@ -148,26 +300,91 @@ export default function Home() {
 
       <main className="container">
         <header className="header">
-          <h1 className="title">{t.title}</h1>
-          <label className="langLabel" htmlFor="lang-select">Language</label>
-          <select id="lang-select" className="langSelect" value={locale} onChange={onLangChange}>
-            {Object.entries(translations).map(([key, val]) => (
-              <option key={key} value={key}>{val.name}</option>
-            ))}
-          </select>
+          <div className="header-content">
+            <h1 className="title">{t.title}</h1>
+            <p className="subtitle">{t.subtitle}</p>
+          </div>
+          <div className="lang-selector">
+            <label className="langLabel" htmlFor="lang-select">Language</label>
+            <select id="lang-select" className="langSelect" value={locale} onChange={onLangChange}>
+              {Object.entries(translations).map(([key, val]) => (
+                <option key={key} value={key}>{val.name}</option>
+              ))}
+            </select>
+          </div>
         </header>
 
-        <section className="intro">
-          <p>{t.intro}</p>
+        <section className="hero">
+          <div className="hero-content">
+            <h2 className="hero-title">{t.heroTitle}</h2>
+            <p className="hero-subtitle">{t.heroSubtitle}</p>
+          </div>
+          <div className="hero-images">
+            <div className="image-wrapper">
+              <img 
+                src="/Ekran görüntüsü 2025-11-15 144016.png" 
+                alt="Premium Mad Honey"
+                className="hero-image"
+              />
+            </div>
+            <div className="image-wrapper">
+              <img 
+                src="/Ekran görüntüsü 2025-11-15 144159.png" 
+                alt="Authentic Mad Honey"
+                className="hero-image"
+              />
+            </div>
+          </div>
         </section>
 
-        <section className="grid">
-          {t.sections.map((s, i) => (
-            <article key={i} className="card">
-              <h2>{s.h}</h2>
-              <p>{s.p}</p>
-            </article>
-          ))}
+        <section className="intro">
+          <p className="intro-text">{t.intro}</p>
+        </section>
+
+        <section className="benefits">
+          <div className="benefits-grid">
+            {t.benefits.map((benefit, i) => (
+              <div key={i} className="benefit-card">
+                <div className="benefit-icon">{benefit.icon}</div>
+                <h3 className="benefit-title">{benefit.title}</h3>
+                <p className="benefit-desc">{benefit.desc}</p>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        <section className="features">
+          <div className="features-grid">
+            {t.features.map((feature, i) => (
+              <article key={i} className="feature-card">
+                <h2>{feature.h}</h2>
+                <p>{feature.p}</p>
+              </article>
+            ))}
+          </div>
+        </section>
+
+        <section className="cta-section">
+          <div className="cta-content">
+            <h2 className="cta-title">{t.cta.title}</h2>
+            <p className="cta-subtitle">{t.cta.subtitle}</p>
+            <div className="cta-buttons">
+              <a 
+                href={AMAZON_LINK} 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="cta-button primary"
+              >
+                {t.cta.button}
+              </a>
+              <a 
+                href="#features" 
+                className="cta-button secondary"
+              >
+                {t.cta.buttonSecondary}
+              </a>
+            </div>
+          </div>
         </section>
 
         <footer className="footer">
