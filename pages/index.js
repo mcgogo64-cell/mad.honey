@@ -1,6 +1,4 @@
 import Head from 'next/head';
-import { useRouter } from 'next/router';
-import { useMemo } from 'react';
 
 const AMAZON_LINK = 'https://amzn.to/4o1YhZ8';
 
@@ -106,8 +104,7 @@ const PremiumIcons = {
   )
 };
 
-const translations = {
-  en: {
+const t = {
     name: 'English',
     title: 'Premium Wild Mad Honey from the Himalayas',
     subtitle: 'Hand-harvested from the cliffs of Nepal, sourced from Himalayan rhododendron nectar.',
@@ -183,99 +180,11 @@ const translations = {
       note: 'Your purchase is protected by Amazon\'s A-to-z Guarantee'
     },
     footer: '© 2025 Himalayan Mad Honey. All Rights Reserved.'
-  },
-  tr: {
-    name: 'Türkçe',
-    title: 'Himalaya\'dan Premium Yabani Deli Bal',
-    subtitle: 'Nepal\'in kayalıklarından elle toplanmış, Himalaya orman gülü nektarından üretilmiş.',
-    heroTitle: 'Premium Yabani Deli Bal',
-    heroSubtitle: 'Himalaya\'dan',
-    heroDescription: 'Nepal\'in kayalıklarından elle toplanmış, Himalaya orman gülü nektarından üretilmiş.',
-    trustBadges: [
-      { text: 'Organik' },
-      { text: 'Yabani Hasat' },
-      { text: 'Küçük Parti' },
-      { text: 'Laboratuvar Testli' }
-    ],
-    features: [
-      {
-        icon: 'wild',
-        title: 'Yabani & Organik',
-        desc: 'Yüksek rakımlı uzak Himalaya orman gülü ormanlarından toplanmıştır.'
-      },
-      {
-        icon: 'nepal',
-        title: 'Otantik Nepal Menşei',
-        desc: 'Yerel bal toplayıcıları tarafından yüzyıllardır kullanılan geleneksel yöntemlerle hasat edilir.'
-      },
-      {
-        icon: 'premium',
-        title: 'Yüksek Potans',
-        desc: 'Kontrollü miktarlarda doğal grayanotoksin içerir, güvenlik için laboratuvar test edilmiştir.'
-      },
-      {
-        icon: 'rare',
-        title: 'Sınırlı Hasat',
-        desc: 'Mevsimsel olarak üretilir, küçük parti, nadir ve çok aranır.'
-      }
-    ],
-    whatIs: {
-      title: 'Deli Bal Nedir?',
-      content: 'Deli Bal, Nepal\'in Himalaya dik kayalıklarında yaşayan yerel bal toplayıcıları tarafından, yabani orman gülü çiçeklerinden üretilen nadir bir bal türüdür. Güçlü aroması, benzersiz etkileri ve geleneksel kullanım geçmişi nedeniyle dünyanın en özel balları arasında yer alır.'
-    },
-    origin: {
-      title: 'Nepal\'in Kayalıklarından',
-      content: 'Premium Deli Bal\'ımız, nesiller boyunca aktarılan geleneksel yöntemler kullanarak tehlikeli Himalaya kayalıklarını tırmanan yetenekli yerel bal toplayıcıları tarafından hasat edilir. Her hasat, Nepal\'in zengin kültürel mirası ve doğal bolluğunun bir kanıtıdır.'
-    },
-    benefits: {
-      title: 'Faydalar',
-      items: [
-        'Güçlü, aromatik lezzet',
-        'Yerel Himalaya topluluklarında geleneksel olarak kullanılır',
-        'Doğal olarak oluşan aktif bileşikler (laboratuvar testli)'
-      ]
-    },
-    safety: {
-      title: 'Güvenlik & Kullanım',
-      items: [
-        'Sadece küçük miktarlarda tüketin',
-        'Hamile bireyler için önerilmez',
-        'Çocuklardan uzak tutun',
-        'Kontrollü grayanotoksin seviyelerini sağlamak için laboratuvar test edilmiştir'
-      ]
-    },
-    cta: {
-      title: 'Premium Himalaya Deli Bal\'ını Deneyin',
-      subtitle: 'Sınırlı Hasat – Dünya Çapında Kargo',
-      button: 'Şimdi Satın Al'
-    },
-    amazonTrust: {
-      title: 'Amazon\'da Güvenle Alışveriş Yapın',
-      badges: [
-        { text: 'Güvenli Ödeme', icon: 'secure' },
-        { text: 'Prime Uygun', icon: 'prime' },
-        { text: 'Hızlı Teslimat', icon: 'delivery' },
-        { text: 'Kolay İade', icon: 'returns' }
-      ],
-      note: 'Satın alımınız Amazon A-to-z Garantisi ile korunmaktadır'
-    },
-    footer: '© 2025 Himalaya Deli Bal. Tüm Hakları Saklıdır.'
-  }
 };
 
 export default function Home() {
-  const router = useRouter();
-  const { locale = 'en' } = router;
-  const t = useMemo(() => translations[locale] || translations.en, [locale]);
-  const isRtl = locale === 'ar';
-
-  const onLangChange = (e) => {
-    const nextLocale = e.target.value;
-    router.push('/', '/', { locale: nextLocale });
-  };
-
   const siteUrl = 'https://mad-honey.vercel.app';
-  const currentUrl = `${siteUrl}${router.asPath}`;
+  const currentUrl = siteUrl;
   const imageUrl = `${siteUrl}/Ekran görüntüsü 2025-11-15 144016.png`;
 
   const structuredData = {
@@ -300,19 +209,25 @@ export default function Home() {
   };
 
   return (
-    <div className={isRtl ? 'rtl' : ''}>
+    <div>
       <Head>
-        <title>{t.title} | Himalayan Mad Honey</title>
+        <title>{t.title} | Premium Himalayan Mad Honey - Amazon</title>
         <meta name="description" content={t.subtitle} />
-        <meta name="keywords" content="nepal mad honey, himalayan honey, wild honey, rhododendron honey, premium honey, nepal honey" />
+        <meta name="keywords" content="nepal mad honey, himalayan honey, wild honey, rhododendron honey, premium honey, nepal honey, amazon mad honey, buy mad honey, authentic mad honey" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <meta name="robots" content="index, follow" />
+        <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+        <meta name="language" content="English" />
         <link rel="canonical" href={currentUrl} />
         <meta property="og:title" content={t.title} />
         <meta property="og:description" content={t.subtitle} />
         <meta property="og:image" content={imageUrl} />
         <meta property="og:url" content={currentUrl} />
+        <meta property="og:locale" content="en_US" />
+        <meta property="og:type" content="website" />
         <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content={t.title} />
+        <meta name="twitter:description" content={t.subtitle} />
+        <meta name="twitter:image" content={imageUrl} />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
@@ -325,13 +240,6 @@ export default function Home() {
       <nav className="navbar">
         <div className="nav-container">
           <div className="nav-logo">Himalayan Mad Honey</div>
-          <div className="lang-selector">
-            <select className="lang-select" value={locale} onChange={onLangChange}>
-              {Object.entries(translations).map(([key, val]) => (
-                <option key={key} value={key}>{val.name}</option>
-              ))}
-            </select>
-          </div>
         </div>
       </nav>
 
@@ -346,6 +254,12 @@ export default function Home() {
               <a href={AMAZON_LINK} target="_blank" rel="noopener noreferrer" className="cta-button">
                 {t.cta.button}
               </a>
+              <div className="amazon-trusted-badge">
+                <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M10 2L12 7L17 8L13 12L14 17L10 14L6 17L7 12L3 8L8 7L10 2Z" stroke="#CDA349" strokeWidth="1.5" fill="#CDA349" fillOpacity="0.2"/>
+                </svg>
+                <span>100% Trusted Amazon</span>
+              </div>
               <p className="trust-note">Limited Seasonal Harvest</p>
             </div>
           </div>

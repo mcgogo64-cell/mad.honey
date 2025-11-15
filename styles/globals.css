@@ -144,11 +144,36 @@ body {
   font-size: 20px;
 }
 
+.amazon-trusted-badge {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 15px;
+  padding: 10px 20px;
+  background: #FAF7F2;
+  border: 1.5px solid #CDA349;
+  border-radius: 25px;
+  font-size: 14px;
+  font-weight: 600;
+  color: #2A1E0F;
+  font-family: 'Inter', sans-serif;
+}
+
+.amazon-trusted-badge svg {
+  flex-shrink: 0;
+}
+
+.amazon-trusted-badge span {
+  letter-spacing: 0.3px;
+}
+
 .trust-note {
   font-size: 14px;
   color: #8B7355;
   font-style: italic;
   letter-spacing: 0.5px;
+  margin-top: 10px;
 }
 
 /* Trust Badges */
