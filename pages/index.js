@@ -5,7 +5,7 @@ import { useMemo } from 'react';
 const translations = {
   en: {
     name: 'English',
-    title: 'Mad Honey (Deli Bal)',
+    title: 'Mad Honey',
     intro: 'Mad honey is a distinctive honey made from rhododendron nectar (Rhododendron spp.) in regions like Turkey\'s Black Sea and the Himalayas. It naturally contains grayanotoxins that affect the heart and nervous system. While traditionally used in very small amounts, misuse can be dangerous.',
     sections: [
       { h: 'What is it?', p: 'A naturally occurring honey with grayanotoxins, known for its strong aroma and potential physiological effects.' },
@@ -17,7 +17,7 @@ const translations = {
   },
   tr: {
     name: 'Türkçe',
-    title: 'Deli Bal (Mad Honey)',
+    title: 'Deli Bal',
     intro: 'Deli bal, Karadeniz ve Himalaya bölgelerinde yetişen orman gülü (Rhododendron) nektarından üretilen, kalp ve sinir sistemini etkileyen grayanotoksinler içeren özel bir baldı. Geleneksel olarak çok küçük miktarlarda kullanılsa da yanlış kullanım tehlikelidir.',
     sections: [
       { h: 'Nedir?', p: 'Grayanotoksin içeren, kuvvetli aromalı ve fizyolojik etkileri olabilen doğal bir bal türü.' },
@@ -29,7 +29,7 @@ const translations = {
   },
   es: {
     name: 'Español',
-    title: 'Miel loca (Deli Bal)',
+    title: 'Miel loca',
     intro: 'La miel loca se elabora con néctar de rododendro en regiones como la costa del Mar Negro (Turquía) y el Himalaya. Contiene grayanotoxinas que afectan el corazón y el sistema nervioso. Su uso tradicional es en cantidades muy pequeñas; el uso indebido puede ser peligroso.',
     sections: [
       { h: '¿Qué es?', p: 'Miel natural con grayanotoxinas, aroma intenso y posibles efectos fisiológicos.' },
@@ -41,7 +41,7 @@ const translations = {
   },
   fr: {
     name: 'Français',
-    title: 'Miel fou (Deli Bal)',
+    title: 'Miel fou',
     intro: 'Le miel fou est produit à partir du nectar de rhododendron, notamment en Turquie (mer Noire) et dans l’Himalaya. Il contient des grayanotoxines qui agissent sur le cœur et le système nerveux. Traditionnellement utilisé en très petites quantités, un mauvais usage peut être dangereux.',
     sections: [
       { h: 'Qu’est-ce que c’est ?', p: 'Un miel naturel contenant des grayanotoxines, au parfum prononcé et aux effets physiologiques possibles.' },
@@ -53,7 +53,7 @@ const translations = {
   },
   de: {
     name: 'Deutsch',
-    title: 'Gifthonig (Deli Bal)',
+    title: 'Gifthonig',
     intro: 'Gifthonig wird aus Rhododendron-Nektar hergestellt (u. a. Schwarzmeerregion in der Türkei und Himalaya). Er enthält Grayanotoxine, die Herz und Nervensystem beeinflussen. Traditionell nur in sehr kleinen Mengen verwendet; falscher Gebrauch kann gefährlich sein.',
     sections: [
       { h: 'Was ist das?', p: 'Natürlicher Honig mit Grayanotoxinen, kräftigem Aroma und möglichen physiologischen Effekten.' },
@@ -65,7 +65,7 @@ const translations = {
   },
   ar: {
     name: 'العربية',
-    title: 'العسل المجنون (دلي بال)',
+    title: 'العسل المجنون',
     intro: 'يُنتَج العسل المجنون من رحيق الورد الجبلي (الرودودندرون) في مناطق مثل البحر الأسود في تركيا والهِمالايا. يحتوي بشكل طبيعي على جرايانوكسينات تؤثر في القلب والجهاز العصبي. يُستعمل تقليديًا بكميات صغيرة جدًا، وسوء الاستخدام قد يكون خطيرًا.',
     sections: [
       { h: 'ما هو؟', p: 'عسل طبيعي يحتوي على جرايانوكسينات، ذو رائحة قوية وقد يسبب تأثيرات فسيولوجية.' },
@@ -77,7 +77,7 @@ const translations = {
   },
   hi: {
     name: 'हिन्दी',
-    title: 'मैड हनी (डेली बाल)',
+    title: 'मैड हनी',
     intro: 'मैड हनी रोडोडेंड्रन के पराग से बने शहद का एक प्रकार है (तुर्की के ब्लैक सी क्षेत्र और हिमालय में). इसमें ग्रायैनोटॉक्सिन होते हैं जो हृदय और तंत्रिका तंत्र को प्रभावित कर सकते हैं। पारंपरिक रूप से बहुत कम मात्रा में उपयोग; गलत उपयोग खतरनाक हो सकता है।',
     sections: [
       { h: 'यह क्या है?', p: 'प्राकृतिक शहद जिसमें ग्रायैनोटॉक्सिन होते हैं, तीव्र सुगंध और संभावित शारीरिक प्रभावों के साथ।' },
@@ -89,7 +89,7 @@ const translations = {
   },
   zh: {
     name: '简体中文',
-    title: '疯蜜（Deli Bal）',
+    title: '疯蜜',
     intro: '疯蜜由杜鹃花（Rhododendron）花蜜制成，主要产自土耳其黑海沿岸和喜马拉雅地区。它天然含有灰毡毒素，可能影响心脏与神经系统。传统上以极少量食用，误用可能很危险。',
     sections: [
       { h: '是什么？', p: '一种天然蜂蜜，含灰毡毒素，气味浓郁，可能产生生理影响。' },
@@ -101,7 +101,7 @@ const translations = {
   },
   ja: {
     name: '日本語',
-    title: '狂蜂蜜（Deli Bal）',
+    title: '狂蜂蜜',
     intro: '狂蜂蜜はツツジ属（Rhododendron）の蜜から作られ、トルコ黒海沿岸やヒマラヤで産出されます。グラヤノトキシンを含み、心臓や神経系に作用することがあります。伝統的にはごく少量のみ使用され、誤用は危険です。',
     sections: [
       { h: '概要', p: 'グラヤノトキシンを含む天然の蜂蜜で、強い香りと生理的影響を持つ場合があります。' },
@@ -113,7 +113,7 @@ const translations = {
   },
   ru: {
     name: 'Русский',
-    title: 'Безумный мёд (Deli Bal)',
+    title: 'Безумный мёд',
     intro: 'Безумный мёд получают из нектара рододендрона (Rhododendron) в регионах, таких как побережье Чёрного моря в Турции и Гималаи. Он естественно содержит граянотоксины, влияющие на сердце и нервную систему. Традиционно употребляется в очень малых дозах; неправильное употребление опасно.',
     sections: [
       { h: 'Что это?', p: 'Натуральный мёд с граянотоксинами, с ярким ароматом и возможными физиологическими эффектами.' },
@@ -140,7 +140,7 @@ export default function Home() {
     <div className={isRtl ? 'rtl' : ''}>
       <Head>
         <title>{t.title}</title>
-        <meta name="description" content="Accurate, brief information about Mad Honey (Deli Bal) with multilingual support." />
+        <meta name="description" content="Accurate, brief information about Mad Honey with multilingual support." />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta property="og:title" content={t.title} />
         <meta property="og:description" content={t.intro} />
