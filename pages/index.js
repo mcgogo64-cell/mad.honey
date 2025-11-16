@@ -252,6 +252,10 @@ export default function Home() {
             <h1 className="hero-title">{t.heroTitle}</h1>
             <p className="hero-subtitle">{t.heroSubtitle}</p>
             <p className="hero-description">{t.heroDescription}</p>
+            <div className="hero-price">
+              <span className="price-label">Price</span>
+              <span className="price-amount">$36.96</span>
+            </div>
             <div className="hero-cta">
               <a href={AMAZON_LINK} target="_blank" rel="noopener noreferrer" className="cta-button">
                 {t.cta.button}
