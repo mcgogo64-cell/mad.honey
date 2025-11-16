@@ -203,8 +203,10 @@ export default function Home() {
     "offers": {
       "@type": "Offer",
       "url": AMAZON_LINK,
+      "price": "36.96",
       "priceCurrency": "USD",
-      "availability": "https://schema.org/InStock"
+      "availability": "https://schema.org/InStock",
+      "priceValidUntil": "2026-12-31"
     }
   };
 
